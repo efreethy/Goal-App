@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-#  before_action :validate_author, only: :show
+  before_action :validate_author, only: :show
 
   def show
     @goal = Goal.find(params[:id])

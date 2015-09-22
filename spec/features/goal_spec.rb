@@ -43,10 +43,19 @@ feature "list goals to user" do
 end
 
 feature "privacy permissions work on goals" do
+  let(:user) {create_private_user}
+  let(:guest) {create_and_sign_in_user}
+
   before :each do
-    create_and_sign_in_user
-    4.times { create(:goal, user_id: user.id, permission:"Private") }
+    guest
+    visit(user_url(user))
   end
 
+  it "cannot click into private goals" do
+    expect(page).to_not have_content('See more')
+  end
 
+  it "gets redirected if it tries to visit a private goal" do
+    expect(page).to have_content("Here are the goals for #{user.username}")
+  end
 end

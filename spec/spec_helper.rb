@@ -24,6 +24,12 @@ RSpec.configure do |config|
 
 end
 
+def create_private_user
+  user = create(:user)
+  4.times { create(:goal, user_id: user.id, permission:"Private") }
+  user
+end
+
 def create_and_sign_in_user
   user = create(:user)
   visit ("/session/new")
