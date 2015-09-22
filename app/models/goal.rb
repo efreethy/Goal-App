@@ -18,5 +18,6 @@ class Goal < ActiveRecord::Base
   validates :permission, inclusion: { in: ["Private", "Public"] }
 
   belongs_to :user
+  has_many :comments, as: :commentable
 
 end

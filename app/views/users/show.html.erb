@@ -22,3 +22,22 @@
 &#10003; <b> <%= goal.title  %></b>
 <br>
 <% end %>
+
+<h4> Comments: </h4>
+<% @user.comments.each do |c|%>
+Author: <%= c.user_id %><br>
+Body:  <%= c.body %>
+<% end%>
+
+<h4> Add Comment </h4>
+
+<form  action="<%= comments_url %>" method="post">
+  <%= auth_token %>
+
+  <label for="comment_body">
+    Comment
+    <input id="comment_body" type="text" name="comment[body]">
+  </label>
+
+  <input type="submit" value="Add Comment">
+</form>

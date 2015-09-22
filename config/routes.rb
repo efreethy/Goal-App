@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   end
   resource :session
   resources :goals, except: [:show]
+  resources :comments
 end

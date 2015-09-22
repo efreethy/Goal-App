@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :goals, dependent: :destroy
-
+  has_many :comments, as: :commentable
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
