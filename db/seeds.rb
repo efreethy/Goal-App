@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.new(username: "evan", password: "evanevan" )
+user.save
+4.times { FactoryGirl.create(:goal, user_id: user.id)}

@@ -1,1 +1,24 @@
-<h1>User show page</h1>
+<h1>Welcome to the Goals App Page</h1>
+
+<h3> Here are your goals! </h3>
+
+<h4> Incomplete Goals: </h4>
+<ol>
+<% @user.incomplete_goals.each do |goal| %>
+<li><b><%= goal.title %></b>, created at: <%= goal.created_at.to_date %>
+  <% if valid_author? || goal.permission == 'Public'  %>
+    <br>
+    <%= goal.description[2..35] +"...  " %>
+    <%= link_to "See more", user_goal_url(@user, goal), class: "SeeMore"  %>
+  <% end %>
+</li>
+<br>
+<% end %>
+</ol>
+
+<h4> Complete Goals: </h4>
+
+<% @user.completed_goals.each do |goal| %>
+&#10003; <b> <%= goal.title  %></b>
+<br>
+<% end %>
